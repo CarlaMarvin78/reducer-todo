@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const TodoForm = ({addTodo}) => {
+const TodoForm = ({addTodo, clearCompleted}) => {
     const [item, setItem] = useState("");
     const handleChange = event => setItem(event.target.value);
     const handleSubmit = event => {
@@ -16,6 +16,7 @@ const TodoForm = ({addTodo}) => {
                 value={item}
                 onChange={handleChange} />
             <button type="submit">Add Todo</button>
+            <button onClick={clearCompleted}>Clear Completed</button>
         </form>
     )
 }

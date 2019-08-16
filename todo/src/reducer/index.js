@@ -18,6 +18,8 @@ export function reducer(state, action) {
                 return todo;
             });
             return {...state, todoArray: newTodoArray};
+        case "CLEAR_COMPLETED":
+            return {...state, todoArray: state.todoArray.filter(todo => !todo.completed)};
         default:
             return state;
     }
