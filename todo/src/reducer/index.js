@@ -12,7 +12,12 @@ export function reducer(state, action) {
     switch(action.type) {
         case "ADD_TODO":
             return {...state, todoArray: [...state.todoArray, {item: action.payload, completed:false, id:Date.now()}]};
-            break;
+        case "TOGGLE_COMPLETED":
+            const newTodoArray = state.todoArray.map(todo=> {
+                if (todo.id===action.payload) return {...todo, completed: !todo.completed};
+                return todo;
+            });
+            return {...state, todoArray: newTodoArray};
         default:
             return state;
     }
